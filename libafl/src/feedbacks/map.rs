@@ -56,13 +56,7 @@ pub struct OrReducer {}
 
 impl<T> Reducer<T> for OrReducer
 where
-    T: BitOr<Output = T>
-        + Default
-        + Copy
-        + 'static
-        + Serialize
-        + serde::de::DeserializeOwned
-        + PartialOrd,
+    T: BitOr<Output = T> + Default + Copy + 'static + Serialize + serde::de::DeserializeOwned,
 {
     #[inline]
     fn reduce(history: T, new: T) -> T {
@@ -76,13 +70,7 @@ pub struct AndReducer {}
 
 impl<T> Reducer<T> for AndReducer
 where
-    T: BitAnd<Output = T>
-        + Default
-        + Copy
-        + 'static
-        + Serialize
-        + serde::de::DeserializeOwned
-        + PartialOrd,
+    T: BitAnd<Output = T> + Default + Copy + 'static + Serialize + serde::de::DeserializeOwned,
 {
     #[inline]
     fn reduce(history: T, new: T) -> T {
@@ -486,14 +474,7 @@ where
 
 impl<I, N, O, R, S, T> MapFeedback<I, N, O, R, S, T>
 where
-    T: PrimInt
-        + Default
-        + Copy
-        + 'static
-        + Serialize
-        + serde::de::DeserializeOwned
-        + PartialOrd
-        + Debug,
+    T: PartialEq + Default + Copy + 'static + Serialize + serde::de::DeserializeOwned + Debug,
     R: Reducer<T>,
     N: IsNovel<T>,
     O: MapObserver<T>,
