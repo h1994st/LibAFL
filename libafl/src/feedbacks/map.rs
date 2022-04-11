@@ -43,7 +43,7 @@ pub type MaxMapOneOrFilledFeedback<I, O, S, T> =
 /// A `Reducer` function is used to aggregate values for the novelty search
 pub trait Reducer<T>: Serialize + serde::de::DeserializeOwned + 'static + Debug
 where
-    T: PrimInt + Default + Copy + 'static + Serialize + serde::de::DeserializeOwned,
+    T: Default + Copy + 'static + Serialize + serde::de::DeserializeOwned,
 {
     /// Reduce two values to one value, with the current [`Reducer`].
     fn reduce(first: T, second: T) -> T;
